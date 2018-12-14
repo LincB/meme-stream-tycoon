@@ -10,7 +10,7 @@
 
 .main-grid {
   display: grid;
-  grid-gap: 10px;
+  grid-gap: 15px;
   grid-template-columns: 200px 1fr 400px 200px;
   grid-template-rows: 300px 100px 100px;
   grid-template-areas: "st sr sr  tr"
@@ -18,7 +18,8 @@
                        ".  .  op op";
   max-width: 1000px;
   margin: 0 auto;
-  margin-top: 2%;
+  /*margin-top: 2%;*/
+  padding: 10px;
   background: #34495e;
   /*background-image: url('https://us.123rf.com/450wm/imichman/imichman1709/imichman170900057/85995466-abstract-geometrical-pattern-with-original-linear-techno-texture-and-repeating-thin-lines-dots-and-g.jpg?ver=6');*/
 }
@@ -66,6 +67,7 @@
 
 .action-btn button:hover {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  cursor: pointer;
 }
 
 .stats-box {
@@ -75,7 +77,7 @@
 
 .stat-display {
   height: calc(25% + 1px);
-  padding: 5px;
+  /*padding-right: 2%;*/
   /*border: 1px solid black;*/
   margin-top: -1px;
 }
@@ -83,6 +85,7 @@
 .stat-child {
   background-color: #b4b1ad;
   border-radius: 2px;
+  border: 2px solid black;
   padding-bottom: 5px;
 }
 
@@ -90,10 +93,13 @@
   margin-top: 0px;
   padding: 3px;
   margin-bottom: 15px;
-  border-radius: 2px;
-  /*color: white;*/
+  border-bottom: 1px solid black;
   padding-left: 2px;
   background-color: #2980b9;
+}
+
+.stat-value {
+  padding-left: .4em;
 }
 
 #btn0 {
@@ -112,4 +118,33 @@
   grid-area: sr;
   background-color: white;
   border: 3px solid orange;
+}
+
+.thread-box {
+  /*margin: 3px 1px 1px 0px;*/
+}
+.side-alert {
+  padding: 1px 1px 1px 1px;
+  margin: 5px 5px 5px 5px;
+  border-radius: 2px;
+  border: 1px solid lightgray;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  background-color: #ff8036;
+}
+
+.side-alert h4 {
+  display: inline-block;
+}
+
+
+.side-alert img {
+  /*align: left;*/
+  float: right;
+  padding: 2px;
+}
+
+
+.side-alert:hover {
+  /*box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);*/
+  cursor: pointer;
 }

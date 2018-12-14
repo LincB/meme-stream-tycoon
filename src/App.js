@@ -15,8 +15,10 @@ class App extends Component {
       staff: 0,
       days: 0,
       actionsText: ["Yes", "No", "Later"],
-      showPopup: true,
+      showPopup: false,
       storyText: "",
+      popupText: "Blank", //TODO: Empty string
+      fireStack: ["fire1", "fire2", "fire3"]
     };
   }
 
@@ -35,6 +37,12 @@ class App extends Component {
     }
   }
 
+  stackClick(i) {
+    console.log(i);
+    this.setState({popupText: this.state.fireStack[i]});
+    this.setState({showPopup: true});
+  }
+
   static toDollars(amount) {
     return "$" + amount.toString().replace(/\d(?=(\d{3})+$)/g, '$&,');
   }
@@ -49,8 +57,8 @@ class App extends Component {
             staff={this.state.staff}
             days={this.state.days} />
           <StoryBox contents={this.state.storyText}/>
-          <ThreadPopup visible={this.state.showPopup}/>
-          <ThreadsBox/>
+          <ThreadPopup visible={this.state.showPopup} popupText={this.state.popupText}/>
+          <ThreadsBox fireStack={this.state.fireStack} handler={i => this.stackClick(i)}/>
           <ActionsBox btnText={this.state.actionsText} handler={i => this.handleClick(i)}/>
         </div>
       </div>
