@@ -36,8 +36,9 @@
 
 .story-box-wrapper {
   grid-area: sr;
-  border: 3px solid black;
+  border: 3px solid orange;
   padding: 10px;
+  background-color: white;
 }
 
 .story-box {
@@ -69,7 +70,7 @@
 
 .stats-box {
     grid-area: st;
-    border: 3px solid red;
+    /*border: 3px solid red;*/
 }
 
 .stat-display {
