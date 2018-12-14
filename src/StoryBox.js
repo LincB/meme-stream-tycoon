@@ -4,7 +4,7 @@ class StoryBox extends Component {
   render() {
     return (
       <div className="story-box-wrapper">
-        <textarea className="story-box" readOnly/>
+        <div className="story-box"/>
       </div>
     )
   }
