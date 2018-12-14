@@ -4,6 +4,7 @@ import StatsBox from './StatsBox';
 import ThreadsBox from './ThreadsBox';
 import ActionsBox from './ActionsBox';
 import StoryBox from './StoryBox';
+import ThreadPopup from './ThreadPopup';
 
 class App extends Component {
   constructor(props) {
@@ -13,12 +14,25 @@ class App extends Component {
       users: 0,
       staff: 0,
       days: 0,
+      showPopup: true,
       actionsText: ["a", "b", "c"],
+      storyText: "",
     };
   }
 
   handleClick(i) {
-    alert(i);
+    switch (i) {
+      case 0:
+        this.setState({balance: this.state.balance + 123 ** 2});
+        break;
+      case 1:
+        this.setState({showPopup: !this.state.showPopup});
+        break;
+      case 2:
+        this.setState({storyText: this.state.storyText + 'aaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaa aaabbbbbbbbbbbbbbbbbbb bbbbbbbbbbbbbbbbbbb bbbbbbbbbbbbbbbbb bbbbbbbbbbbbb bbbbbbbbbb '});
+        break;
+      default:
+    }
   }
 
   static toDollars(amount) {
@@ -34,7 +48,8 @@ class App extends Component {
             users={this.state.users}
             staff={this.state.staff}
             days={this.state.days} />
-          <StoryBox/>
+          <StoryBox contents={this.state.storyText}/>
+          <ThreadPopup visible={this.state.showPopup}/>
           <ThreadsBox/>
           <ActionsBox btnText={this.state.actionsText} handler={i => this.handleClick(i)}/>
         </div>
