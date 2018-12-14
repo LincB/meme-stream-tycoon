@@ -9,13 +9,13 @@ function ActionButton(props) {
 }
 
 function ActionsBox(props) {
-  let btns = [];
-  for (let i = 0; i < 3; i++) {
-    btns.push(<ActionButton text={props.btnText[i]} onClick={() => props.handler(i)}/>);
-  }
   return (
     <div className="actions-box">
-      {btns}
+      {[0, 1, 2].map(
+        i => <ActionButton text={props.btnText[i]}
+                           onClick={() => props.handler(i)}
+                           key={i.toString()}/>
+      )}
     </div>
   );
 }
