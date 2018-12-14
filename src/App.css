@@ -3,17 +3,21 @@
   font-family: "Lucida Console";
 }
 
+.app {
+  padding: 10px;
+  width: content-box;
+}
+
 .main-grid {
   display: grid;
   grid-gap: 10px;
   grid-template-columns: 200px 1fr 400px 200px;
   grid-template-rows: 300px 100px 100px;
-  grid-template-areas: "st . .  tr"
-                       ".  . .  tr"
-                       ".  . op op";
+  grid-template-areas: "st sr sr  tr"
+                       ".  sr sr  tr"
+                       ".  .  op op";
   max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   margin-top: 2%;
   background: #34495e;
   /*background-image: url('https://us.123rf.com/450wm/imichman/imichman1709/imichman170900057/85995466-abstract-geometrical-pattern-with-original-linear-techno-texture-and-repeating-thin-lines-dots-and-g.jpg?ver=6');*/
@@ -29,6 +33,18 @@
   /*border: 3px solid blue;*/
   padding: 5px;
 }
+
+.story-box-wrapper {
+  grid-area: sr;
+  border: 3px solid black;
+  padding: 10px;
+}
+
+.story-box {
+  height: 100%;
+  overflow: scroll;
+}
+
 
 .action-btn {
   float: left;
@@ -52,13 +68,8 @@
 }
 
 .stats-box {
-  grid-area: st;
-  /*padding-top: 15px;*/
-  /*border: 3px solid red;*/
-}
-
-.stats-box {
-  padding: 5px;
+    grid-area: st;
+    border: 3px solid red;
 }
 
 .stat-display {
@@ -94,4 +105,10 @@
 
 #btn2 {
   background-color: cornflowerblue;
+}
+
+.thread-popup {
+  grid-area: sr;
+  background-color: white;
+  border: 3px solid orange;
 }

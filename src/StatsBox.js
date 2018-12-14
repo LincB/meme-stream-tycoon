@@ -6,7 +6,7 @@ class StatsBox extends Component {
   labels = {
     'balance': 'Bank balance',
     'users': 'User count',
-    'staff': 'Number of staff',
+    'staff': 'Staff count',
     'days': 'Days since launch'
   };
 
