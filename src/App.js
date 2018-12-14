@@ -12,7 +12,7 @@ class App extends Component {
       users: 0,
       staff: 0,
       days: 0,
-      actionsText: ["a", "b", "c"],
+      actionsText: ["Yes", "No", "Later"],
     };
   }
 
