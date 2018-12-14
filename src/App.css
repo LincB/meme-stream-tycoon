@@ -42,3 +42,19 @@
   height: 100%;
   width: 100%;
 }
+
+.stats-box {
+  padding: 5px;
+}
+
+.stat-display {
+  height: calc(25% + 1px);
+  padding: 5px;
+  border: 1px solid black;
+  margin-top: -1px;
+}
+
+.stat-label {
+  margin-top: 0px;
+  margin-bottom: 15px;
+}

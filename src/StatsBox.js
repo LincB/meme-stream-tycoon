@@ -1,7 +1,24 @@
-import React from 'react';
+import React, {Component} from 'react';
+import StatDisplay from './StatDisplay';
 
-function StatsBox() {
-  return <div className="stats-box"/>
+class StatsBox extends Component {
+
+  labels = {
+    'balance': 'Bank balance',
+    'users': 'User count',
+    'staff': 'Number of staff',
+    'days': 'Days since launch'
+  };
+
+  render() {
+    return (
+      <div className="stats-box">
+        {Object.keys(this.labels).map(
+          key => <StatDisplay key={key} label={this.labels[key]} value={this.props[key]}/>
+        )}
+      </div>
+    );
+  }
 }
 
 export default StatsBox;
