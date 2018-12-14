@@ -76,10 +76,11 @@
 }
 
 .stat-display {
-  height: calc(25% + 1px);
+  height: 25%;
   /*padding-right: 2%;*/
   /*border: 1px solid black;*/
-  margin-top: -1px;
+  /*margin-top: -1px;*/
+  margin-bottom: 0px;
 }
 
 .stat-child {
