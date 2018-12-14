@@ -3,6 +3,7 @@ import './App.css';
 import StatsBox from './StatsBox';
 import ThreadsBox from './ThreadsBox';
 import ActionsBox from './ActionsBox';
+import StoryBox from './StoryBox';
 
 class App extends Component {
   constructor(props) {
@@ -33,6 +34,7 @@ class App extends Component {
             users={this.state.users}
             staff={this.state.staff}
             days={this.state.days} />
+          <StoryBox/>
           <ThreadsBox/>
           <ActionsBox btnText={this.state.actionsText} handler={i => this.handleClick(i)}/>
         </div>
