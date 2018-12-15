@@ -115,10 +115,15 @@
   background-color: cornflowerblue;
 }
 
-.thread-popup {
+.thread-popup-wrapper {
   grid-area: sr;
-  background-color: white;
   border: 3px solid orange;
+  padding: 10px;
+  background-color: white;
+}
+
+.thread-popup {
+  overflow: scroll;
 }
 
 .thread-box {
