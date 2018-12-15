@@ -40,8 +40,8 @@ class App extends Component {
   }
 
   stackClick(i) {
-    console.log(i);
-    this.setState({popupText: this.state.fireStack[i]});
+    // console.log(i);
+    this.setState({popupText: this.state.fireQueue[i].text});
     this.setState({showPopup: true});
 
   }
