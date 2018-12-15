@@ -5,6 +5,7 @@ import ThreadsBox from './ThreadsBox';
 import ActionsBox from './ActionsBox';
 import StoryBox from './StoryBox';
 import ThreadPopup from './ThreadPopup';
+import build from './FireBuilder';
 
 class App extends Component {
   constructor(props) {
@@ -18,7 +19,8 @@ class App extends Component {
       showPopup: false,
       storyText: "",
       popupText: "Blank", //TODO: Empty string
-      fireStack: ["fire1", "fire2", "fire3"]
+      // fireStack: ["fire1", "fire2", "fire3"],
+      fireQueue: build()
     };
   }
 
@@ -38,9 +40,10 @@ class App extends Component {
   }
 
   stackClick(i) {
-    console.log(i);
-    this.setState({popupText: this.state.fireStack[i]});
+    // console.log(i);
+    this.setState({popupText: this.state.fireQueue[i].text});
     this.setState({showPopup: true});
+
   }
 
   static toDollars(amount) {
@@ -58,7 +61,7 @@ class App extends Component {
             days={this.state.days} />
           <StoryBox contents={this.state.storyText}/>
           <ThreadPopup visible={this.state.showPopup} popupText={this.state.popupText}/>
-          <ThreadsBox fireStack={this.state.fireStack} handler={i => this.stackClick(i)}/>
+          <ThreadsBox fireQueue={this.state.fireQueue} handler={i => this.stackClick(i)}/>
           <ActionsBox btnText={this.state.actionsText} handler={i => this.handleClick(i)}/>
         </div>
       </div>
