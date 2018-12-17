@@ -20,7 +20,7 @@ class App extends Component {
       storyText: "",
       popupText: "Blank", //TODO: Empty string
       // fireStack: ["fire1", "fire2", "fire3"],
-      fireQueue: build()
+      fireQueue: build(this)
     };
   }
 
