@@ -159,3 +159,7 @@
   margin-top: 0.5em;
   text-align: center;
 }
+
+.thread-popup p {
+  margin-top: 0;
+}

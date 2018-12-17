@@ -39,6 +39,7 @@ class MainFire extends FireBoi {
     let state = this.states[stateName];
     this.text = state.text;
     this.btns = state.btns;
+    this.app.setState({currentFire: this});
   }
 }
 

@@ -15,33 +15,25 @@ class App extends Component {
       users: 0,
       staff: 0,
       days: 0,
-      actionsText: ["Yes", "No", "Later"],
+      // actionsText: ["Yes", "No", "Later"],
       showPopup: false,
       storyText: "",
-      popupText: "Blank", //TODO: Empty string
-      // fireStack: ["fire1", "fire2", "fire3"],
-      fireQueue: build(this)
+      currentFire: null,
     };
+    this.fireQueue = build(this);
   }
 
   handleClick(i) {
-    switch (i) {
-      case 0:
-        this.setState({balance: this.state.balance + 123 ** 2});
-        break;
-      case 1:
-        this.setState({showPopup: !this.state.showPopup});
-        break;
-      case 2:
-        this.setState({storyText: this.state.storyText + 'aaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaa aaabbbbbbbbbbbbbbbbbbb bbbbbbbbbbbbbbbbbbb bbbbbbbbbbbbbbbbb bbbbbbbbbbbbb bbbbbbbbbb '});
-        break;
-      default:
+    if (this.state.currentFire == null) return;
+    console.log(this.state.currentFire);
+    if (this.state.currentFire.btns.length > i) {
+      this.state.currentFire.btns[i].func();
     }
   }
 
   stackClick(i) {
     // console.log(i);
-    this.setState({popupText: this.state.fireQueue[i].text});
+    this.setState({currentFire: this.fireQueue[i]});
     this.setState({showPopup: true});
 
   }
@@ -51,6 +43,12 @@ class App extends Component {
   }
 
   render() {
+    let popupText = '';
+    let actionsText = ['', '', ''];
+    if (this.state.currentFire !== null) {
+      popupText = this.state.currentFire.text;
+      this.state.currentFire.btns.forEach((btn, i) => actionsText[i] = btn.text);
+    }
     return (
       <div className="app">
         <div className="main-grid">
@@ -60,9 +58,9 @@ class App extends Component {
             staff={this.state.staff}
             days={this.state.days} />
           <StoryBox contents={this.state.storyText}/>
-          <ThreadPopup visible={this.state.showPopup} popupText={this.state.popupText}/>
-          <ThreadsBox fireQueue={this.state.fireQueue} handler={i => this.stackClick(i)}/>
-          <ActionsBox btnText={this.state.actionsText} handler={i => this.handleClick(i)}/>
+          <ThreadPopup visible={this.state.showPopup} popupText={popupText}/>
+          <ThreadsBox fireQueue={this.fireQueue} handler={i => this.stackClick(i)}/>
+          <ActionsBox btnText={actionsText} handler={i => this.handleClick(i)}/>
         </div>
       </div>
     );
