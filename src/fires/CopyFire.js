@@ -2,7 +2,7 @@ import FireBoi from '../FireBoi';
 import React from 'react';
 
 class CopyFire extends FireBoi {
-  name = 'Copy';
+  name = 'Takedown';
   turnedOn = false;
   states = {
     'start': {

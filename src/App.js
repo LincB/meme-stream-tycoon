@@ -61,8 +61,8 @@ class App extends Component {
 
   endCycle() {
     this.addDays(7);
-    this.addMoney(-100 - 500 * this.state.staff + Math.floor(0.05 * this.state.users));
-    this.addUsers(Math.floor(this.state.users * (0.1 + 0.05 * (this.state.staff - this.moderators))));
+    this.addMoney(-100 - 300 * this.state.staff + Math.floor(0.05 * this.state.users));
+    this.addUsers(Math.floor(this.state.users * (0.1 + 0.03 * (this.state.staff - this.moderators))));
     // Update active fires
     let fireKeys = Object.keys(this.fires);
     for (let i = 0; i < fireKeys.length; i++) {
