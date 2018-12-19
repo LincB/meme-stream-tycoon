@@ -2,8 +2,9 @@ import FireBoi from '../FireBoi';
 import React from 'react';
 
 class CopySuitFire extends FireBoi {
-  name = 'Copyright Lawsuit!';
+  name = 'Suit Up!';
   turnedOn = false;
+  image = 'http://pngimg.com/uploads/gavel/gavel_PNG36.png';
   states = {
     'start': {
       text: <>

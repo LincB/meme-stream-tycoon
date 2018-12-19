@@ -4,6 +4,7 @@ import React from 'react';
 class BlackoutFire extends FireBoi {
   name = 'Blackout';
   turnedOn = false;
+  image = 'https://warwick.ac.uk/fac/soc/law/research/centres/chrp/protest.png';
   states = {
     'start': {
       text: <>

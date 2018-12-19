@@ -4,6 +4,7 @@ import React from 'react';
 class CopyFire extends FireBoi {
   name = 'Takedown';
   turnedOn = false;
+  image = 'https://vignette.wikia.nocookie.net/grandchase/images/3/35/Notice.png/revision/latest?cb=20121226111223';
   states = {
     'start': {
       text: <>

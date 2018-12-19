@@ -5,6 +5,7 @@ class MainFire extends FireBoi {
   name = 'Site Builder';
   turnedOn = true;
   doneCupcake = false;
+  // image = 'https://cdn.shopify.com/s/files/1/2506/0996/collections/hand-4_1200x1200.png?v=1511386856';
   states = {
     'start': {
       text: <>

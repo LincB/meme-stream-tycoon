@@ -4,6 +4,7 @@ import React from 'react';
 class WarrantFire extends FireBoi {
   name = 'Warrant';
   turnedOn = false;
+  image = 'http://cdn.onlinewebfonts.com/svg/img_377073.png';
   states = {
     'start': {
       text: <>

@@ -4,6 +4,7 @@ import React from 'react';
 class NetFire extends FireBoi {
   name = 'Blackmail';
   turnedOn = false;
+  image = 'https://upload.wikimedia.org/wikipedia/commons/b/b5/Network_neutrality_symbol.png';
   waiting = false;
   states = {
     'start': {

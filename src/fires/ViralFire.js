@@ -4,6 +4,7 @@ import React from 'react';
 class CopyFire extends FireBoi {
   name = 'Gone Viral!';
   turnedOn = false;
+  image = 'https://www.freeiconspng.com/uploads/red-up-arrow-png-26.png';
   states = {
     'start': {
       text: <>

@@ -4,6 +4,7 @@ import React from 'react';
 class DefamationFire extends FireBoi {
   name = 'Defamation';
   turnedOn = false;
+  image = 'https://clipart.info/images/ccovers/1499793239facebook-angry-emoji-like-png.png';
   states = {
     'start': {
       text: <>

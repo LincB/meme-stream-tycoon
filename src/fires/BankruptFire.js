@@ -4,6 +4,7 @@ import React from 'react';
 class BankruptFire extends FireBoi {
   name = 'Bankrupt';
   turnedOn = false;
+  image = 'http://cdn.onlinewebfonts.com/svg/img_458633.png';
   states = {
     'start': {
       text: <>

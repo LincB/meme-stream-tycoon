@@ -1,7 +1,7 @@
 class FireBoi {
     turnedOn = false;
     name = "";
-    image = "";
+    image = "http://www.stickpng.com/assets/images/58a1e021e33a543010fac278.png";
     states = {};
     text = "";
     btns = [];
