@@ -2,8 +2,8 @@ import FireBoi from '../FireBoi';
 import React from 'react';
 
 class CopySuitFire extends FireBoi {
-  name = 'CopySuit';
-  turnedOn = true;
+  name = 'Copyright Lawsuit!';
+  turnedOn = false;
   states = {
     'start': {
       text: <>
@@ -19,8 +19,7 @@ class CopySuitFire extends FireBoi {
           text: 'Lawyer Up',
           func: () => {
             this.app.addMoney(-5000);
-            this.loadState('start');
-            //this.app.endCycle();
+            this.loadState('lawyered');
           },
         },
         {
@@ -28,15 +27,30 @@ class CopySuitFire extends FireBoi {
           func: () => {
             this.loadState('self-rep');
             this.app.addMoney(-25000);
-            //this.app.endCycle();
           },
         },
         {
           text: 'No Show',
           func: () => {
             this.app.addMoney(-50000);
-            this.loadState('start');
-            //this.app.endCycle();
+            this.loadState('no-show');
+          },
+        },
+      ],
+    },
+    'lawyered': {
+      text: <>
+        <p>Luckily, you hired a good lawyer, and they negotiated a settlement.</p>
+        <p>You'll pay another $5,000 and agree to hire moderators, and the studio will drop the suit.</p>
+      </>,
+      btns: [
+        {
+          text: 'Continue',
+          func: () => {
+            this.app.addMoney(-600);
+            this.app.addStaff(2);
+            this.app.removeFire(this);
+            this.app.endCycle();
           },
         },
       ],
@@ -44,16 +58,15 @@ class CopySuitFire extends FireBoi {
     'no-show': {
       text: <>
         <h4>Not your best idea.</h4>
-        <p>It doesn't even matter who was right. If you don't show, enjoy a fat default value.</p>
-        <p>The judge was swooned by the fact that the studio bothered to show up. That'll be $50,000</p>
+        <p>It doesn't even matter who was right. If you don't show, enjoy a fat default judgement.</p>
+        <p>The judge was swooned by the fact that the studio bothered to show up. That'll be $50,000.</p>
       </>,
       btns: [
         {
           text: 'Continue',
           func: () => {
-            //this.app.setState({dangerous: this.app.state.dangerous + 1});
-            this.loadState('no-show');
-            //this.app.endCycle();
+            this.app.removeFire(this);
+            this.app.endCycle();
           },
         },
       ],
@@ -69,14 +82,24 @@ class CopySuitFire extends FireBoi {
         {
           text: 'Continue',
           func: () => {
-            //this.app.setState({dangerous: this.app.state.dangerous + 1});
-            this.loadState('no-rep');
-            //this.app.endCycle();
+            this.app.removeFire(this);
+            this.app.endCycle();
           },
         },
       ],
     },
   };
+
+  check() {
+    return this.app.hasTakedown === 1 && Math.random() * this.app.state.dangerous > 0.7;
+  }
+
+  activate() {
+    this.app.hasTakedown = 2;
+    if (this.app.fires['copy'].turnedOn) {
+      this.app.removeFire(this.app.fires['copy'], true);
+    }
+  }
 }
 
 export default CopySuitFire;

@@ -2,8 +2,8 @@ import FireBoi from '../FireBoi';
 import React from 'react';
 
 class BlackoutFire extends FireBoi {
-  name = 'BlackOut';
-  turnedOn = true;
+  name = 'Blackout';
+  turnedOn = false;
   states = {
     'start': {
       text: <>
@@ -23,22 +23,23 @@ class BlackoutFire extends FireBoi {
           text: 'Shut \'Er Down!',
           func: () => {
             this.app.addUsers(500);
+            this.app.addMoney(-1 * Math.floor(0.03 * this.app.state.users));
             this.loadState('whoops');
-            //this.app.endCycle();
+            this.app.endCycle();
           },
         },
         {
           text: 'Gotta Make That Money',
           func: () => {
-            this.loadState('no-dice');
-            //this.app.endCycle();
+            this.app.addUsers(-500);
+            this.app.removeFire(this);
+            this.app.endCycle();
           },
         },
         {
           text: 'Later',
           func: () => {
-            this.loadState('start');
-            //this.app.endCycle();
+            this.app.setState({currentFire: this.app.fires['main']});
           },
         },
       ],
@@ -61,7 +62,7 @@ class BlackoutFire extends FireBoi {
               this.loadState('ouch');
             }
             else {
-              this.loadState('start'); //TODO: main story
+              this.app.removeFire(this);
             }
             //this.app.endCycle();
           },
@@ -78,14 +79,21 @@ class BlackoutFire extends FireBoi {
         {
           text: 'Continue',
           func: () => {
-            this.setState({throttle: 1});
-            this.loadState('start'); //TODO: story
-            //this.app.endCycle();
+            this.app.removeFire(this);
+            this.app.endCycle();
           },
         },
       ],
     },
   };
+
+  check() {
+    return !this.app.doneBlackout && this.app.targetBalance > 10000 && Math.random() * this.app.state.dangerous > 0.8;
+  }
+
+  activate() {
+    this.app.doneBlackout = true;
+  }
 }
 
 export default BlackoutFire;

@@ -20,23 +20,20 @@ class WarrantFire extends FireBoi {
         {
           text: 'Come on in',
           func: () => {
-            this.app.addMoney(-500);
+            // this.app.addMoney(-500);
             this.loadState('bribe');
-            //this.app.endCycle();
           },
         },
         {
           text: 'Not A Chance',
           func: () => {
             this.loadState('no-pay');
-            //this.app.endCycle();
           },
         },
         {
           text: 'Phone A Friend',
           func: () => {
             this.loadState('lawyer');
-            //this.app.endCycle();
           },
         },
       ],
@@ -47,7 +44,7 @@ class WarrantFire extends FireBoi {
         <p>They're mad. And big. And armed. They're coming in no matter what. </p>
         <p>They barge right on in and stomp around. After tossing around some of your desk clutter one suddenly
           exclaims, "AHA!"</p>
-        <p>he holds up a bag of marijuana that you know wasn't there before. you're being framed! </p>
+        <p>he holds up a bag of marijuana that you know wasn't there before. You're being framed! </p>
         <p>They offer to toss it out for you for a small fee of $500.</p>
         <p>Take your pick.</p>
         <p>You could just pay up. Easier that way.</p>
@@ -57,10 +54,8 @@ class WarrantFire extends FireBoi {
         {
           text: 'Pay Up',
           func: () => {
-            //this.app.setState({dangerous: this.app.state.dangerous + 1});
             this.app.addMoney(-500);
             this.loadState('bribe');
-            //this.app.endCycle();
           },
         },
         {
@@ -75,15 +70,15 @@ class WarrantFire extends FireBoi {
       text: <>
         <h4>Shut Up And Take My Money</h4>
         <p>They snap the cash right off ya'. They pivot on their heels and laugh their way out the door. Great work,
-          genius. Seems like somebody forgot their fourth amendment rights</p>
+          genius. Seems like somebody forgot their fourth amendment rights.</p>
         <p>Now you know. Gotta look on the bright side.</p>
       </>,
       btns: [
         {
           text: 'Continue',
           func: () => {
-            this.loadState('start');
-            //this.app.endCycle();
+            this.app.removeFire(this);
+            this.app.endCycle();
           },
         },
       ],
@@ -98,8 +93,8 @@ class WarrantFire extends FireBoi {
         {
           text: 'Continue',
           func: () => {
-            this.loadState('start');
-            //this.app.endCycle();
+            this.app.removeFire(this);
+            this.app.endCycle();
           },
         },
       ],
@@ -116,7 +111,6 @@ class WarrantFire extends FireBoi {
           text: 'Continue',
           func: () => {
             this.loadState('no-bribe');
-            //this.app.endCycle();
           },
         },
       ],

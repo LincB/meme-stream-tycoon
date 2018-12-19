@@ -126,7 +126,7 @@ class MainFire extends FireBoi {
         {
           text: 'DRM freedom',
           func: () => {
-            this.app.setState({criminalCopyRisk: 1});
+            this.app.setState({copyRisk: this.app.state.copyRisk + 4});
             this.app.addUsers(this.app.state.users * 6);
             this.loadState('ad-campaign');
             this.app.endCycle();
@@ -195,11 +195,14 @@ class MainFire extends FireBoi {
           coming up quickly!</p>
         <p><i>If you'd like to see all the places where MemeStream can take you, living dangerously might be the
           best way to go.</i></p>
+        <p><i>Click an icon on the right sidebar to return to an issue you've previously ignored.</i></p>
       </>,
       btns: [
         {
           text: 'Hire staff',
           func: () => {
+            this.app.addStaff(1);
+            this.app.addMoney(-500);
             this.loadState('business-go');
             this.app.endCycle();
           },
@@ -214,7 +217,7 @@ class MainFire extends FireBoi {
         {
           text: 'Live dangerously',
           func: () => {
-            this.app.setState({dangerous: this.app.state.dangerous + 1});
+            this.app.setState({dangerous: this.app.state.dangerous + 0.5});
             this.loadState('business-go');
             this.app.endCycle();
           },

@@ -17,6 +17,10 @@ class App extends Component {
 
   moderators = 0;
   finishedIntro = false;
+  hasTakedown = 0;
+  doneBlackout =  false;
+  doneBlackmail = false;
+  doneDefamation = false;
 
   constructor(props) {
     super(props);
@@ -47,15 +51,16 @@ class App extends Component {
   }
 
   stackClick(fireIdx) {
-    this.setState({currentFire: this.state.visibleFires[fireIdx]});
-    this.setState({showPopup: true});
-
+    if (this.state.currentFire === this.fires['main']) {
+      this.setState({currentFire: this.state.visibleFires[fireIdx]});
+    }
+    // this.setState({showPopup: true});
   }
 
   endCycle() {
     this.addDays(7);
-    this.addMoney(-100 - 500 * this.state.staff + Math.floor(0.02 * this.state.users));
-    this.addUsers(Math.floor(this.state.users * 0.1));
+    this.addMoney(-100 - 500 * this.state.staff + Math.floor(0.05 * this.state.users));
+    this.addUsers(Math.floor(this.state.users * (0.1 + 0.05 * (this.state.staff - this.moderators))));
     // Update active fires
     let fireKeys = Object.keys(this.fires);
     for (let i = 0; i < fireKeys.length; i++) {
@@ -65,20 +70,23 @@ class App extends Component {
       if (!fire.check()) continue;
 
       fire.turnedOn = true;
-      this.setState({
-        visibleFires: this.state.visibleFires.concat([fire]),
+      this.setState(prevState => {return {
+        visibleFires: prevState.visibleFires.concat([fire]),
         currentFire: fire,
-      });
+      };});
       fire.activate();
       break;
     }
   }
 
-  removeFire(toRemove) {
-    this.setState({
-      visibleFires: this.state.visibleFires.filter(f => f !== toRemove),
-      currentFire: this.fires['main'],
-    });
+  removeFire(toRemove, dontResetState) {
+    this.setState(prevState => {return {
+      visibleFires: prevState.visibleFires.filter(f => f !== toRemove),
+    };});
+
+    if (dontResetState === undefined) {
+      this.setState({currentFire: this.fires['main']});
+    }
     toRemove.turnedOn = false;
   }
 

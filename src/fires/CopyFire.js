@@ -31,15 +31,16 @@ class CopyFire extends FireBoi {
             this.app.addMoney(-500);
             this.app.addStaff(1);
             this.app.moderators += 1;
-            this.app.removeFire(this);
+            this.app.hasTakedown = false;
             this.app.endCycle();
+            this.app.removeFire(this);
           },
         },
         {
           text: 'Let It Ride',
           func: () => {
-            this.app.removeFire(this);
             this.app.endCycle();
+            this.app.removeFire(this);
           },
         },
         {
@@ -53,7 +54,15 @@ class CopyFire extends FireBoi {
   };
 
   check() {
-    return this.app.state.users > 1000;
+    if (!this.app.finishedIntro) return false;
+    debugger;
+    return this.app.moderators === 0 && this.app.hasTakedown === 0 &&
+      Math.random() * this.app.state.dangerous > 0.9 - 0.05 * this.app.state.copyRisk &&
+      this.app.state.users > 1000;
+  }
+
+  activate() {
+    this.app.hasTakedown = 1;
   }
 }
 

@@ -25,7 +25,7 @@ class CopyFire extends FireBoi {
   };
 
   check() {
-    return this.app.finishedIntro && Math.random() * this.app.state.dangerous > 0.7 &&
+    return this.app.finishedIntro && Math.random() > 0.8 &&
       this.app.state.users < 20000;
   }
 

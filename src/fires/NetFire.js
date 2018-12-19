@@ -2,8 +2,8 @@ import FireBoi from '../FireBoi';
 import React from 'react';
 
 class NetFire extends FireBoi {
-  name = 'NetBlackmail';
-  turnedOn = true;
+  name = 'Blackmail';
+  turnedOn = false;
   states = {
     'start': {
       text: <>
@@ -21,8 +21,8 @@ class NetFire extends FireBoi {
           func: () => {
             this.app.addMoney(-5000);
             this.setState({throttle: 0}); //retroactive
-            this.loadState('start');
-            //this.app.endCycle();
+            this.app.removeFire(this);
+            this.app.endCycle();
           },
         },
         {
@@ -37,8 +37,7 @@ class NetFire extends FireBoi {
         {
           text: 'Maybe Later',
           func: () => {
-            this.loadState('start');
-            //this.app.endCycle();
+            this.app.setState({currentFire: this.app.fires['main']});
           },
         },
       ],
@@ -54,14 +53,21 @@ class NetFire extends FireBoi {
         {
           text: 'Continue',
           func: () => {
-            //this.app.setState({dangerous: this.app.state.dangerous + 1});
-            this.loadState('start');
-            //this.app.endCycle();
+            this.app.removeFire(this);
+            this.app.endCycle();
           },
         },
       ],
     },
   };
+
+  check() {
+    return !this.app.doneBlackmail && this.app.targetBalance > 10000 && Math.random() * this.app.state.dangerous > 0.9;
+  }
+
+  activate() {
+    this.app.doneBlackmail = true;
+  }
 }
 
 export default NetFire;

@@ -6,13 +6,8 @@ class FireBoi {
     text = "";
     btns = [];
 
-    constructor(app, name, states, image, tick, check) {
+    constructor(app) {
         this.app = app;
-        // this.name = name;
-        // this.states = states;
-        // this.image = image;
-        // this.tick = tick;
-        // this.check = check;
     }
 
     init() {
