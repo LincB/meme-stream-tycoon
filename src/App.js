@@ -19,11 +19,12 @@ class App extends Component {
 
       showPopup: true,
       storyText: "",
-      visibleFires: [this.fires['main']],
+      visibleFires: [this.fires['main'],this.fires['copy']],
       currentFire: this.fires['main'],
 
       copyRisk: 0,
       criminalCopyRisk: 0,
+      throttle: 0,
     };
   }
 
@@ -62,7 +63,7 @@ class App extends Component {
   }
 
   addUsers(u) {
-    this.setState(prevState => {return {users: prevState.users + u};});
+    this.setState(prevState => {return {users: prevState.users + (u * (this.state * .5)) };}); //throttles by .5
   }
 
   addStaff(s) {

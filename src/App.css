@@ -123,6 +123,10 @@
 }
 
 .thread-popup {
+  /*overflow: scroll;*/
+}
+
+.thread-popup-wrapper {
   overflow: scroll;
 }
 
