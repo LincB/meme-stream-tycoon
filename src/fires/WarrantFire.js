@@ -1,4 +1,4 @@
-import FireBoi from './FireBoi';
+import FireBoi from '../FireBoi';
 import React from 'react';
 
 class WarrantFire extends FireBoi {

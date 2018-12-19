@@ -1,7 +1,7 @@
 import React from 'react';
 import FireBoi from './FireBoi';
-import MainFire from './MainFire';
-import CopyFire from "./CopyFire";
+import MainFire from './fires/MainFire';
+import CopyFire from "./fires/CopyFire";
 
 function build(app) {
   let fires = {};
