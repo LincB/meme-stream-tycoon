@@ -9,6 +9,7 @@ import DefamationFire from './fires/DefamationFire';
 import WarrantFire from './fires/WarrantFire';
 import BankruptFire from './fires/BankruptFire';
 import WinFire from './fires/WinFire';
+import FairUseFire from './fires/FairUseFire';
 
 function build(app) {
   let fires = {};
@@ -19,6 +20,7 @@ function build(app) {
   fires['copy'] = new CopyFire(app);
   fires['copysuit'] = new CopySuitFire(app);
   fires['viral'] = new ViralFire(app);
+  fires['fairuse'] = new FairUseFire(app);
   fires['blackout'] = new BlackoutFire(app);
   fires['blackmail'] = new NetFire(app);
   fires['defamation'] = new DefamationFire(app);

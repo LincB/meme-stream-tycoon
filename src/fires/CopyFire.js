@@ -55,7 +55,6 @@ class CopyFire extends FireBoi {
 
   check() {
     if (!this.app.finishedIntro) return false;
-    debugger;
     return this.app.moderators === 0 && this.app.hasTakedown === 0 &&
       Math.random() * this.app.state.dangerous > 0.9 - 0.05 * this.app.state.copyRisk &&
       this.app.state.users > 1000;

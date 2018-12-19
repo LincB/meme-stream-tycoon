@@ -253,7 +253,7 @@ class MainFire extends FireBoi {
       text: <>
         <p>That might not have been the best idea. None of your employees quit, but rumors start
           to appear on online message that your'e a terrible business owner and MemeStream
-          is corrupt. You thing you know who started them.</p>
+          is corrupt. You think you know who started them.</p>
       </>,
       btns: [
         {
