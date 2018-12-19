@@ -1,28 +1,38 @@
+import React from 'react';
 import FireBoi from './FireBoi';
-import MainFire from './MainFire';
 
 function build(app) {
-  let lst = [];
-  let fire1Btns = [{text: "put it out", func: () => {}}, {text: "put it out", func: () => {}},
-    {text: "put it out", func: () => {}} ];
-  let fire1 = new FireBoi(app, "fire1", "http://www.stickpng.com/assets/images/58a1e021e33a543010fac278.png",
-      "this is the first fire", 1, 2, fire1Btns);
-  lst.unshift(fire1);
-  // if(fire1.turnedOn)fire1.turnedOn = false;
+  let fires = {};
 
-  let fire2Btns = [{text: "put it out", func: () => {}}, {text: "put it out", func: () => {}},
-    {text: "put it out", func: () => {}} ];
-  let fire2 = new FireBoi(app, "fire2", "http://www.stickpng.com/assets/images/58a1e021e33a543010fac278.png",
-      "this is the second fire", () => {}, () => {}, fire2Btns);
-  lst.unshift(fire2);
+  let mainFireStates = {
+    'start': {
+      text: <>
+        <h2>Welcome to Meme Stream Tycoon!</h2>
+        <p>You are a young, self-taught programmer, eager to change the world with your skills.
+          Of course, like most of the other programmers you know, you want to make a lot of money along
+          the way.</p>
+        <p>Seeing the wild success of online video streaming, you think it's a great way to start your
+          career. All you have to do is make a cool site and you'll be rich, right?</p>
+        <p><i>Use the buttons below to navigate your journey.</i></p>
+      </>,
+      btns: [
+        {
+          text: 'Continue',
+          func: () => this.loadState('build'),
+        }
+      ],
+    },
+    'build': {
+      text: <>
+        <p>Build your site</p>
+      </>,
+      btns: [
+      ],
+    }
+  };
 
-  let fire3Btns = [{text: "put it out", func: () => {}}, {text: "put it out", func: () => {}},
-    {text: "put it out", func: () => {}} ];
-  let fire3 = new FireBoi(app, "fire3", "http://www.stickpng.com/assets/images/58a1e021e33a543010fac278.png",
-      "this is the first fire", () => {}, () => {}, fire3Btns);
-  lst.unshift(fire3);
-  lst.unshift(new MainFire(app));
-  return lst;
+  fires['main'] = new FireBoi(app, 'Main', mainFireStates);
+  return fires;
 }
 
 export default build;

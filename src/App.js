@@ -10,17 +10,17 @@ import build from './FireBuilder';
 class App extends Component {
   constructor(props) {
     super(props);
+    this.fires = build(this);
     this.state = {
       balance: 0,
       users: 0,
       staff: 0,
       days: 0,
-      // actionsText: ["Yes", "No", "Later"],
       showPopup: false,
       storyText: "",
+      visibleFires: [this.fires['main']],
       currentFire: null,
     };
-    this.fireQueue = build(this);
   }
 
   handleClick(i) {
@@ -31,9 +31,8 @@ class App extends Component {
     }
   }
 
-  stackClick(i) {
-    // console.log(i);
-    this.setState({currentFire: this.fireQueue[i]});
+  stackClick(fireIdx) {
+    this.setState({currentFire: this.state.visibleFires[fireIdx]});
     this.setState({showPopup: true});
 
   }
@@ -59,7 +58,7 @@ class App extends Component {
             days={this.state.days} />
           <StoryBox contents={this.state.storyText}/>
           <ThreadPopup visible={this.state.showPopup} popupText={popupText}/>
-          <ThreadsBox fireQueue={this.fireQueue} handler={i => this.stackClick(i)}/>
+          <ThreadsBox fires={this.state.visibleFires} handler={i => this.stackClick(i)}/>
           <ActionsBox btnText={actionsText} handler={i => this.handleClick(i)}/>
         </div>
       </div>

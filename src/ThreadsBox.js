@@ -3,7 +3,7 @@ import React from 'react';
 function ThreadsBox(props) {
   return (
         <div className="threads-box">
-        {props.fireQueue.filter((i) => i.turnedOn).map(
+        {props.fires.map(
             (value, index) => <div className="side-alert" onClick={() => props.handler(index)} key={value.name}>
               <span key={value.name}>
                 <h4>{value.name}</h4>
