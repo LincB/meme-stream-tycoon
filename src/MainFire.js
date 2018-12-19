@@ -3,6 +3,7 @@ import React from 'react';
 
 class MainFire extends FireBoi {
   name = 'Main';
+  turnedOn = true;
   states = {
     'start': {
       text: <>
@@ -17,7 +18,10 @@ class MainFire extends FireBoi {
       btns: [
         {
           text: 'Continue',
-          func: () => this.loadState('build'),
+          func: () => {
+            this.loadState('build');
+            this.app.endCycle();
+            },
         }
       ],
     },

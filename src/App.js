@@ -25,7 +25,6 @@ class App extends Component {
 
   handleClick(i) {
     if (this.state.currentFire == null) return;
-    console.log(this.state.currentFire);
     if (this.state.currentFire.btns.length > i) {
       this.state.currentFire.btns[i].func();
     }
@@ -35,6 +34,22 @@ class App extends Component {
     this.setState({currentFire: this.state.visibleFires[fireIdx]});
     this.setState({showPopup: true});
 
+  }
+
+  endCycle() {
+    // Update users and money, animate?
+    // Update active fires
+    // Check possible new fires
+    let fireKeys = Object.keys(this.fires);
+    for (let i = 0; i < fireKeys.length; i++) {
+      let fire = this.fires[fireKeys[i]];
+      if (fire.turnedOn) continue;
+      if (!fire.check()) continue;
+
+      fire.turnedOn = true;
+      this.setState({visibleFires: this.state.visibleFires.concat([fire])});
+      break;
+    }
   }
 
   static toDollars(amount) {

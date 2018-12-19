@@ -6,6 +6,7 @@ function build(app) {
   let fires = {};
 
   fires['main'] = new MainFire(app);
+
   Object.keys(fires).map(k => fires[k].init());
   return fires;
 }

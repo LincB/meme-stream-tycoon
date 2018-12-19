@@ -5,7 +5,7 @@ class FireBoi {
     states = {};
     text = "";
     tick = () => {};
-    check = () => {};
+    check = () => false;
     btns = [];
 
     constructor(app, name, states, image, tick, check) {
