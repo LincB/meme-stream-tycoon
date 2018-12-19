@@ -16,10 +16,14 @@ class App extends Component {
       users: 0,
       staff: 0,
       days: 0,
+
       showPopup: true,
       storyText: "",
       visibleFires: [this.fires['main']],
       currentFire: this.fires['main'],
+
+      copyRisk: 0,
+      criminalCopyRisk: 0,
     };
   }
 
@@ -37,6 +41,7 @@ class App extends Component {
   }
 
   endCycle() {
+    this.addDays(7);
     // Update users and money, animate?
     // Update active fires
     // Check possible new fires
@@ -50,6 +55,22 @@ class App extends Component {
       this.setState({visibleFires: this.state.visibleFires.concat([fire])});
       break;
     }
+  }
+
+  addMoney(b) {
+    this.setState({balance: this.state.balance + b});
+  }
+
+  addUsers(u) {
+    this.setState({users: this.state.users + u});
+  }
+
+  addStaff(s) {
+    this.setState({staff: this.state.staff + s});
+  }
+
+  addDays(d) {
+    this.setState({days: this.state.days + d});
   }
 
   static toDollars(amount) {
