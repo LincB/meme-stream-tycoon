@@ -4,7 +4,7 @@ import React from 'react';
 class WinFire extends FireBoi {
   name = 'You Win!';
   turnedOn = false;
-  image = 'https://www.pngarts.com/explore/84651';
+  image = 'https://www.pngarts.com/files/3/Cupcake-PNG-Image-Background.png';
   states = {
     'start': {
       text: <>
