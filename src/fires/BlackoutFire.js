@@ -11,9 +11,12 @@ class BlackoutFire extends FireBoi {
         <p>Some of the users have reached out to you to let you know about their net neutrality protests! After that
         insufferable Ajit Pai done goofed and sold the Internet to Bomcast, the voters realized the err of their ways.
         </p>
-        <p>They want you to participate in a day of blackout to demonstrate the likely near future.</p>
+        <p>They want you to participate in a day of blackout to demonstrate the likely near future. This'll mean
+        temporarily shutting off all content aside from ad-free curated content (mostly memes) in support of
+          net-neutrality. They've managed to make some particularly funny mash-ups of popular shows and songs to
+        support the cause!</p>
         <p>What do you do?</p>
-        <p>Turn of the site for the day. It'll hurt your profits today, but earn you a lot of goodwill with the usres.
+        <p>Turn of the site for the day. It'll hurt your profits today, but earn you a lot of goodwill with the users.
         </p>
         <p>Encourage content on the topic, but keep it live. Gotta make that cash money!</p>
         <p>Maybe Later?</p>

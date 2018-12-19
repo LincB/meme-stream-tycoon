@@ -1,4 +1,3 @@
-import React from 'react';
 import MainFire from './fires/MainFire';
 import CopyFire from './fires/CopyFire';
 import ViralFire from './fires/ViralFire';
