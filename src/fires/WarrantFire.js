@@ -22,7 +22,7 @@ class WarrantFire extends FireBoi {
           text: 'Come on in',
           func: () => {
             // this.app.addMoney(-500);
-            this.loadState('bribe');
+            this.loadState('come-in');
           },
         },
         {
@@ -112,6 +112,25 @@ class WarrantFire extends FireBoi {
           text: 'Continue',
           func: () => {
             this.loadState('no-bribe');
+          },
+        },
+      ],
+    },
+    'come-in': {
+      text: <>
+        <h4>Oops</h4>
+        <p>They breeze on by and take a look around. Before long they're rummaging through your desk.</p>
+        <p>One of the two shouts out that he found something and holds up a baggie of marijuana. It's not yours.</p>
+        <p>They say it's not to worry and hapilly help themselves to some of the laptops you have laying around.
+          They're stealing your stuff!</p>
+        <p>You were trying to be polite and now you're being framed and robbed!</p>
+      </>,
+      btns: [
+        {
+          text: 'Continue',
+          func: () => {
+            this.app.addMoney(-2000);
+            this.app.removeFire(this);
           },
         },
       ],
