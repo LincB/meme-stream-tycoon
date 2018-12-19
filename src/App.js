@@ -16,10 +16,10 @@ class App extends Component {
       users: 0,
       staff: 0,
       days: 0,
-      showPopup: false,
+      showPopup: true,
       storyText: "",
       visibleFires: [this.fires['main']],
-      currentFire: null,
+      currentFire: this.fires['main'],
     };
   }
 

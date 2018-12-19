@@ -7,6 +7,7 @@ class FireBoi {
     tick = () => {};
     check = () => {};
     btns = [];
+
     constructor(app, name, states, image, tick, check) {
         this.app = app;
         this.name = name;
@@ -14,6 +15,9 @@ class FireBoi {
         this.image = image;
         this.tick = tick;
         this.check = check;
+    }
+
+    init() {
         this.text = this.states['start'].text;
         this.btns = this.states['start'].btns;
     }
