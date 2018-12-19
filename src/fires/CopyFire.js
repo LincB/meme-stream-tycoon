@@ -40,6 +40,7 @@ class CopyFire extends FireBoi {
           text: 'Let It Ride',
           func: () => {
             this.app.removeFire(this);
+            this.app.hasTakedown = true;
             this.app.endCycle();
           },
         },
