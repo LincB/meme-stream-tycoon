@@ -71,7 +71,6 @@ class App extends Component {
     let fireKeys = Object.keys(this.fires);
     for (let i = 0; i < fireKeys.length; i++) {
       let fire = this.fires[fireKeys[i]];
-      console.log(fire);
       if (fire.turnedOn) continue;
       if (!fire.check()) continue;
 

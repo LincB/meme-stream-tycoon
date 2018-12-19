@@ -14,7 +14,7 @@ class MainFire extends FireBoi {
           With the law recruiting season past and no job offers in sight, you think back on your
           computer science degree and realize that a tech career might be your only hope. If you could
           pay off your debt within a year, it would be a miracle!</p>
-        <p>Still, none of the big tech companies are interested in hiring you, so with $2,000 scrounged
+        <p>Still, none of the big tech companies are interested in hiring you, so with $2,000 scrounged up
           from friends and family, you decide to strike out on your own. You're going to create a video
           streaming site, and it had better be the best on the entire internet.</p>
         <p><i>Use the buttons below to navigate your journey.</i></p>
@@ -254,7 +254,7 @@ class MainFire extends FireBoi {
       text: <>
         <p>That might not have been the best idea. None of your employees quit, but rumors start
           to appear on online message that your'e a terrible business owner and MemeStream
-          is corrupt. You thing you know who started them.</p>
+          is corrupt. You think you know who started them.</p>
       </>,
       btns: [
         {
