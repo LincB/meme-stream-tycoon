@@ -20,7 +20,10 @@ class MainFire extends FireBoi {
       btns: [
         {
           text: 'Continue',
-          func: () => this.loadState('build'),
+          func: () => {
+            this.app.addMoney(2000);
+            this.loadState('build');
+          },
         }
       ],
     },

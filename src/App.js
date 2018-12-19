@@ -42,9 +42,9 @@ class App extends Component {
 
   endCycle() {
     this.addDays(7);
-    // Update users and money, animate?
+    this.addMoney(-100 - 500 * this.state.staff + Math.floor(0.02 * this.state.users));
+    this.addUsers(Math.floor(this.state.users * 0.1));
     // Update active fires
-    // Check possible new fires
     let fireKeys = Object.keys(this.fires);
     for (let i = 0; i < fireKeys.length; i++) {
       let fire = this.fires[fireKeys[i]];
@@ -58,11 +58,11 @@ class App extends Component {
   }
 
   addMoney(b) {
-    this.setState({balance: this.state.balance + b});
+    this.setState(prevState => {return {balance: prevState.balance + b};});
   }
 
   addUsers(u) {
-    this.setState({users: this.state.users + u});
+    this.setState(prevState => {return {users: prevState.users + u};});
   }
 
   addStaff(s) {
@@ -74,7 +74,11 @@ class App extends Component {
   }
 
   static toDollars(amount) {
-    return "$" + amount.toString().replace(/\d(?=(\d{3})+$)/g, '$&,');
+    return "$" + App.toThousandDelimited(amount);
+  }
+
+  static toThousandDelimited(amount) {
+    return amount.toString().replace(/\d(?=(\d{3})+$)/g, '$&,');
   }
 
   render() {
@@ -89,7 +93,7 @@ class App extends Component {
         <div className="main-grid">
           <StatsBox
             balance={App.toDollars(this.state.balance)}
-            users={this.state.users}
+            users={App.toThousandDelimited(this.state.users)}
             staff={this.state.staff}
             days={this.state.days} />
           <StoryBox contents={this.state.storyText}/>
