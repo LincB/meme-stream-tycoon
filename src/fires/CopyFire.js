@@ -3,7 +3,7 @@ import React from 'react';
 
 class CopyFire extends FireBoi {
   name = 'Copy';
-  turnedOn = true;
+  turnedOn = false;
   states = {
     'start': {
       text: <>
@@ -20,37 +20,41 @@ class CopyFire extends FireBoi {
         <p>It's up to you. What should you do?</p>
         <p>You can always hire some moderators to help make these decisions. With some quick (Google) training,
           they should be able to clear this right up.</p>
-        <p>There's also the option to just let it ride. Does the studio even have any right to sue over this?</p>
+        <p>There's also the option to just let it ride. You don't want to censor your users, do you?
+          Does the studio even have any right to sue over this?</p>
         <p>Or, maybe you should take some time to think about this.</p>
       </>,
       btns: [
         {
-          text: 'Hire Devs',
+          text: 'Hire Moderators',
           func: () => {
             this.app.addMoney(-500);
             this.app.addStaff(1);
-            this.loadState('start');
-            //this.app.endCycle();
+            this.app.moderators += 1;
+            this.app.removeFire(this);
+            this.app.endCycle();
           },
         },
         {
           text: 'Let It Ride',
           func: () => {
-            this.loadState('start');
-            //this.app.endCycle();
+            this.app.removeFire(this);
+            this.app.endCycle();
           },
         },
         {
           text: 'Let\'s Think About This',
           func: () => {
-            //this.app.setState({dangerous: this.app.state.dangerous + 1});
-            this.loadState('start');
-            //this.app.endCycle();
+            this.app.setState({currentFire: this.app.fires['main']});
           },
         },
       ],
     },
   };
+
+  check() {
+    return this.app.state.users > 1000;
+  }
 }
 
 export default CopyFire;

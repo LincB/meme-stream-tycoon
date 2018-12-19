@@ -15,6 +15,8 @@ class App extends Component {
   targetDays = 0;
   animateInterval = -1;
 
+  moderators = 0;
+
   constructor(props) {
     super(props);
     this.fires = build(this);
@@ -26,7 +28,7 @@ class App extends Component {
 
       showPopup: true,
       storyText: "",
-      visibleFires: [this.fires['main'],this.fires['copy']],
+      visibleFires: [this.fires['main']],
       currentFire: this.fires['main'],
 
       copyRisk: 0,
@@ -56,13 +58,25 @@ class App extends Component {
     let fireKeys = Object.keys(this.fires);
     for (let i = 0; i < fireKeys.length; i++) {
       let fire = this.fires[fireKeys[i]];
+      console.log(fire);
       if (fire.turnedOn) continue;
       if (!fire.check()) continue;
 
       fire.turnedOn = true;
-      this.setState({visibleFires: this.state.visibleFires.concat([fire])});
+      this.setState({
+        visibleFires: this.state.visibleFires.concat([fire]),
+        currentFire: fire,
+      });
       break;
     }
+  }
+
+  removeFire(toRemove) {
+    this.setState({
+      visibleFires: this.state.visibleFires.filter(f => f !== toRemove),
+      currentFire: this.fires['main'],
+    });
+    toRemove.turnedOn = false;
   }
 
   addMoney(b) {
@@ -160,7 +174,8 @@ class App extends Component {
             days={this.state.days} />
           <StoryBox contents={this.state.storyText}/>
           <ThreadPopup visible={this.state.showPopup} popupText={popupText}/>
-          <ThreadsBox fires={this.state.visibleFires} handler={i => this.stackClick(i)}/>
+          <ThreadsBox fires={this.state.visibleFires} handler={i => this.stackClick(i)}
+                      currentFire={this.state.currentFire}/>
           <ActionsBox btnText={actionsText} handler={i => this.handleClick(i)}/>
         </div>
       </div>

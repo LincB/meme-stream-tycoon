@@ -142,6 +142,10 @@
   background-color: #ff8036;
 }
 
+.current-fire {
+  background-color: #e23b0d;
+}
+
 .side-alert h4 {
   display: inline-block;
 }
@@ -162,6 +166,10 @@
 .thread-popup h2 {
   margin-top: 0.5em;
   text-align: center;
+}
+
+.thread-popup h4 {
+  margin-top: 0;
 }
 
 .thread-popup p {
