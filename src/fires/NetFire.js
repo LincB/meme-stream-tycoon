@@ -30,7 +30,7 @@ class NetFire extends FireBoi {
           text: 'Not A Chance',
           func: () => {
             this.app.setState({throttle: 1}); //done goofed.
-            this.app.addUsers(Math.round(-.05 *  this.state.users));
+            this.app.addUsers(Math.round(-.05 *  this.app.state.users));
             this.loadState('no-pay');
             //this.app.endCycle();
           },
