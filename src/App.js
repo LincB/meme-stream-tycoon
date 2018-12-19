@@ -21,6 +21,8 @@ class App extends Component {
   doneBlackout =  false;
   doneBlackmail = false;
   doneDefamation = false;
+  doneWarrant = false;
+  doneFairUse = false;
 
   constructor(props) {
     super(props);

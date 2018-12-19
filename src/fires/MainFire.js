@@ -2,7 +2,7 @@ import FireBoi from '../FireBoi';
 import React from 'react';
 
 class MainFire extends FireBoi {
-  name = 'Main';
+  name = 'Site Builder';
   turnedOn = true;
   states = {
     'start': {

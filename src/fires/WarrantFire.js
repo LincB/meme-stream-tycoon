@@ -3,7 +3,7 @@ import React from 'react';
 
 class WarrantFire extends FireBoi {
   name = 'Warrant';
-  turnedOn = true;
+  turnedOn = false;
   states = {
     'start': {
       text: <>
@@ -116,6 +116,14 @@ class WarrantFire extends FireBoi {
       ],
     },
   };
+
+  check() {
+    return !this.app.doneWarrant && this.app.targetBalance > 10000 && Math.random() * this.app.state.dangerous > 0.8;
+  }
+
+  activate() {
+    this.app.doneWarrant = true;
+  }
 }
 
 export default WarrantFire;

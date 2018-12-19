@@ -7,11 +7,15 @@ import BlackoutFire from './fires/BlackoutFire';
 import NetFire from './fires/NetFire';
 import DefamationFire from './fires/DefamationFire';
 import WarrantFire from './fires/WarrantFire';
+import BankruptFire from './fires/BankruptFire';
+import WinFire from './fires/WinFire';
 
 function build(app) {
   let fires = {};
 
   fires['main'] = new MainFire(app);
+  fires['bankrupt'] = new BankruptFire(app);
+  fires['win'] = new WinFire(app);
   fires['copy'] = new CopyFire(app);
   fires['copysuit'] = new CopySuitFire(app);
   fires['viral'] = new ViralFire(app);

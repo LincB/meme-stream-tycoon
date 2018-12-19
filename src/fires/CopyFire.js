@@ -32,15 +32,15 @@ class CopyFire extends FireBoi {
             this.app.addStaff(1);
             this.app.moderators += 1;
             this.app.hasTakedown = false;
-            this.app.endCycle();
             this.app.removeFire(this);
+            this.app.endCycle();
           },
         },
         {
           text: 'Let It Ride',
           func: () => {
-            this.app.endCycle();
             this.app.removeFire(this);
+            this.app.endCycle();
           },
         },
         {

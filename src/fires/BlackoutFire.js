@@ -58,7 +58,7 @@ class BlackoutFire extends FireBoi {
             //this.app.setState({dangerous: this.app.state.dangerous + 1});
             // this.app.addMoney(-500);
             if(Math.random() > .5)  {
-              this.setState({throttle: 1});
+              this.app.setState({throttle: 1});
               this.loadState('ouch');
             }
             else {
