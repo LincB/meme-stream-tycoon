@@ -7,8 +7,8 @@ class CopyFire extends FireBoi {
   states = {
     'start': {
       text: <>
-        <h4>Oh no! You've Got A Takedown! Copyright infringement?</h4>
-        <p>Of-The-Universe Studios has sent you a takedown order! They claim you've got copyrighted material posted on
+        <h4>Oh no! You've Got A Takedown Notice! Copyright infringement?</h4>
+        <p>Of-The-Universe Studios has sent you a takedown notice! They claim you've got copyrighted material posted on
           your site! Some user posted on a throwaway account something gray-area enough to garner their attention.</p>
         <p>The Case:</p>
         <ul>
