@@ -20,7 +20,7 @@ class NetFire extends FireBoi {
           text: 'Pay Up!',
           func: () => {
             this.app.addMoney(-5000);
-            this.setState({throttle: 0}); //retroactive
+            this.app.setState({throttle: 0}); //retroactive
             this.app.removeFire(this);
             this.app.endCycle();
           },
@@ -28,7 +28,7 @@ class NetFire extends FireBoi {
         {
           text: 'Not A Chance',
           func: () => {
-            this.setState({throttle: 1}); //done goofed.
+            this.app.setState({throttle: 1}); //done goofed.
             this.app.addUsers(Math.round(-.05 *  this.state.users));
             this.loadState('no-pay');
             //this.app.endCycle();
