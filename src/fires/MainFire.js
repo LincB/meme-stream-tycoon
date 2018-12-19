@@ -4,6 +4,7 @@ import React from 'react';
 class MainFire extends FireBoi {
   name = 'Site Builder';
   turnedOn = true;
+  doneCupcake = false;
   states = {
     'start': {
       text: <>
@@ -191,11 +192,9 @@ class MainFire extends FireBoi {
         <p>You might want to hire some programmers to keep improving your site -- they'll be happy
           to help as long as you pay their salary each week and keep the office well stocked
           with cupcakes. If you're not ready to take that leap yet, you can wait and see where the ups
-          and downs of internet fame take you. Remember, your one-year deadline to pay off your debt is
-          coming up quickly!</p>
+          and downs of internet fame take you. Remember, your loans are quickly coming due!</p>
         <p><i>If you'd like to see all the places where MemeStream can take you, living dangerously might be the
           best way to go.</i></p>
-        <p><i>Click an icon on the right sidebar to return to an issue you've previously ignored.</i></p>
       </>,
       btns: [
         {
@@ -203,14 +202,14 @@ class MainFire extends FireBoi {
           func: () => {
             this.app.addStaff(1);
             this.app.addMoney(-500);
-            this.loadState('business-go');
+            this.loadFiller();
             this.app.endCycle();
           },
         },
         {
           text: 'Let your site grow',
           func: () => {
-            this.loadState('business-go');
+            this.loadFiller();
             this.app.endCycle();
           },
         },
@@ -218,13 +217,109 @@ class MainFire extends FireBoi {
           text: 'Live dangerously',
           func: () => {
             this.app.setState({dangerous: this.app.state.dangerous + 0.5});
-            this.loadState('business-go');
+            this.loadFiller();
             this.app.endCycle();
           },
         },
       ],
     },
+    'cupcake-problem': {
+      text: <>
+        <h4>Cupcake Strike!</h4>
+        <p>Your employees have developed a taste for cupcakes, and threaten to quit unless you double
+          their supply.</p>
+        <p>That could cost you thousands of dollars, but you can't afford to have your
+          former employees disparging your business! What do you do?</p>
+      </>,
+      btns: [
+        {
+          text: 'Give in',
+          func: () => {
+            this.app.addMoney(-1000);
+            this.loadFiller();
+            this.app.endCycle();
+          }
+        },
+        {
+          text: 'Refuse',
+          func: () => {
+            this.app.addUsers(Math.floor(-0.3 * this.app.targetUsers));
+            this.loadState('cupcake-refuse');
+          }
+        },
+      ],
+    },
+    'cupcake-refuse': {
+      text: <>
+        <p>That might not have been the best idea. None of your employees quit, but rumors start
+          to appear on online message that your'e a terrible business owner and MemeStream
+          is corrupt. You thing you know who started them.</p>
+      </>,
+      btns: [
+        {
+          text: 'Continue',
+          func: () => {
+            this.loadFiller();
+            this.app.endCycle();
+          }
+        },
+      ],
+    },
   };
+
+  fillers = [
+    <>
+      <p>Isn't this a great life? You work whatever hours wou want, eat cupcakes with your employees, and
+        ocassionally take a look at your site's ever-increasing users numbers.</p>
+      <p>You're so glad you aren't sitting in a law office all day, or even worse, lecturing to a class
+        of unruly college students!</p>
+    </>,
+    <>
+      <p>You get invited to the local TV station to give an interview about MemeStream, "the new Internet
+        phonomenon that's sweeping the millenial generation."</p>
+      <p>It's great to feel important, but you leave with the nagging feeling that you should've worn
+        somethng nicer than the hackathon T-shirt you've been wearing all week.</p>
+    </>,
+    <>
+      <p>Grandma calls, saying she's heard about this new site called "Meemee Stream," and that you're
+        the one behind it.</p>
+      <p>You try to explain to her what your work is about, but she still seems to wish you ended up
+        as a lawyer.</p>
+    </>,
+    <>
+      <p>You go to your college reunion, and everyone's amazed to see you, the C student who's suddenly
+        becoming famous.</p>
+      <p>They all either think that your site will be the next billion-dollar startup or that it'll fail tomorrow.
+        You wish you knew who was right.</p>
+    </>,
+    <>
+      <p>You discover Pokémon Go and spend all week playing. You almost miss the only meeting you had
+        scheduled all week, and promise you'll be more focused next week.</p>
+      <p>Wait, the season finale of <i>Game of Thrones</i> is airing tomorrow!</p>
+    </>,
+  ];
+
+  loadFiller() {
+    if (!this.doneCupcake && Math.random() > 0.8) {
+      this.loadState('cupcake-problem');
+      this.doneCupcake = true;
+      return;
+    }
+
+    let filler = this.fillers[Math.floor(Math.random() * this.fillers.length)];
+    this.states['business-go'].text = (<>
+      {filler}
+      <p><i>Click an icon on the right sidebar to return to an issue you've previously ignored.</i></p>
+    </>);
+    this.loadState('business-go');
+    // Cupcakes
+    // Life is great!
+    // TV interview
+    // Grandma calls
+    // Reunion
+    // Pokemon Go
+      // New office
+  }
 }
 
 export default MainFire;
