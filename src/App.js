@@ -8,6 +8,13 @@ import ThreadPopup from './ThreadPopup';
 import build from './FireBuilder';
 
 class App extends Component {
+
+  targetBalance = 0;
+  targetUsers = 0;
+  targetStaff = 0;
+  targetDays = 0;
+  animateInterval = -1;
+
   constructor(props) {
     super(props);
     this.fires = build(this);
@@ -59,19 +66,73 @@ class App extends Component {
   }
 
   addMoney(b) {
-    this.setState(prevState => {return {balance: prevState.balance + b};});
+    this.targetBalance += b;
+    this.maybeAnimate();
+    // this.setState(prevState => {return {balance: prevState.balance + b};});
   }
 
   addUsers(u) {
-    this.setState(prevState => {return {users: prevState.users + (u * (this.state * .5)) };}); //throttles by .5
+    this.targetUsers += Math.floor(u * (1 - this.state.throttle * .5));
+    this.maybeAnimate();
   }
 
   addStaff(s) {
-    this.setState({staff: this.state.staff + s});
+    this.targetStaff += s;
+    this.maybeAnimate();
   }
 
   addDays(d) {
-    this.setState({days: this.state.days + d});
+    this.targetDays += d;
+    this.maybeAnimate();
+  }
+
+  maybeAnimate() {
+    if ((this.targetBalance !== this.state.balance ||
+          this.targetUsers !== this.state.users ||
+          this.targetStaff !== this.state.staff ||
+          this.targetDays !== this.state.days) && this.animateInterval < 0) {
+      this.animateInterval = setInterval(this.animate.bind(this), 30);
+    }
+  }
+
+  animate() {
+    let active = false;
+    // debugger;
+    if (this.targetBalance !== this.state.balance) {
+      let diff = this.targetBalance - this.state.balance;
+      let sign = diff / Math.abs(diff);
+      // debugger;
+      let change = Math.min(Math.max(Math.floor(0.1 * Math.abs(diff)), 2), Math.abs(diff));
+      this.setState(prevState => {return {balance: prevState.balance + sign * change};});
+      active = true;
+    }
+
+    if (this.targetUsers !== this.state.users) {
+      let diff = this.targetUsers - this.state.users;
+      let sign = diff / Math.abs(diff);
+      let change = Math.min(Math.max(Math.floor(0.1 * Math.abs(diff)), 2), Math.abs(diff));
+      this.setState(prevState => {return {users: prevState.users + sign * change};});
+      active = true;
+    }
+
+    if (this.targetStaff !== this.state.staff) {
+      let diff = this.targetStaff - this.state.staff;
+      let sign = diff / Math.abs(diff);
+      this.setState(prevState => {return {staff: prevState.staff + sign};});
+      active = true;
+    }
+
+    if (this.targetDays !== this.state.days) {
+      let diff = this.targetDays - this.state.days;
+      let sign = diff / Math.abs(diff);
+      this.setState(prevState => {return {days: prevState.days + sign};});
+      active = true;
+    }
+
+    if (!active) {
+      clearInterval(this.animateInterval);
+      this.animateInterval = -1;
+    }
   }
 
   static toDollars(amount) {
