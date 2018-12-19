@@ -2,7 +2,7 @@ import React from 'react';
 
 function ActionButton(props) {
   return (
-    <div className="action-btn">
+    <div className={props.text != "" ? "action-btn shadow-btn" : "action-btn reg-btn"}>
       <button id={props.btnId} onClick={props.onClick}>{props.text}</button>
     </div>
   );
