@@ -16,6 +16,7 @@ class App extends Component {
   animateInterval = -1;
 
   moderators = 0;
+  finishedIntro = false;
 
   constructor(props) {
     super(props);
@@ -34,6 +35,7 @@ class App extends Component {
       copyRisk: 0,
       criminalCopyRisk: 0,
       throttle: 0,
+      dangerous: 1,
     };
   }
 
@@ -67,6 +69,7 @@ class App extends Component {
         visibleFires: this.state.visibleFires.concat([fire]),
         currentFire: fire,
       });
+      fire.activate();
       break;
     }
   }

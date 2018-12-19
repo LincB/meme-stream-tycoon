@@ -158,6 +158,7 @@ class MainFire extends FireBoi {
           text: 'Customization',
           func: () => {
             this.app.addUsers(this.app.state.users * 2);
+            this.app.finishedIntro = true;
             this.loadState('business-go');
             this.app.endCycle();
           },
@@ -166,6 +167,7 @@ class MainFire extends FireBoi {
           text: 'Education',
           func: () => {
             this.app.addUsers(Math.floor(this.app.state.users * 0.25));
+            this.app.finishedIntro = true;
             this.loadState('business-go');
             this.app.endCycle();
           },
@@ -174,6 +176,7 @@ class MainFire extends FireBoi {
           text: 'Freedom',
           func: () => {
             this.app.setState({copyRisk: this.app.state.copyRisk + 1});
+            this.app.finishedIntro = true;
             this.app.addUsers(this.app.state.users * 4);
             this.loadState('business-go');
             this.app.endCycle();

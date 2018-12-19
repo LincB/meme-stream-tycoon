@@ -32,6 +32,8 @@ class FireBoi {
     }
 
     tick() {}
+
+    activate() {}
 }
 
 
