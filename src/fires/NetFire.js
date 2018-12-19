@@ -4,6 +4,7 @@ import React from 'react';
 class NetFire extends FireBoi {
   name = 'Blackmail';
   turnedOn = false;
+  waiting = false;
   states = {
     'start': {
       text: <>
@@ -37,6 +38,7 @@ class NetFire extends FireBoi {
         {
           text: 'Maybe Later',
           func: () => {
+            this.waiting = true;
             this.app.setState({currentFire: this.app.fires['main']});
           },
         },
@@ -62,7 +64,15 @@ class NetFire extends FireBoi {
   };
 
   check() {
-    return !this.app.doneBlackmail && this.app.targetBalance > 10000 && Math.random() * this.app.state.dangerous > 0.9;
+    return !this.app.doneBlackmail && this.app.targetBalance > 5000 && Math.random() * this.app.state.dangerous > 0.9;
+  }
+
+  tick() {
+    if (this.waiting && Math.random() * this.app.state.dangerous > 0.8) {
+      this.states['start'].btns.splice(2, 1);
+      this.app.setState({currentFire: this});
+      this.waiting = false;
+    }
   }
 
   activate() {

@@ -88,7 +88,7 @@ class BlackoutFire extends FireBoi {
   };
 
   check() {
-    return !this.app.doneBlackout && this.app.targetBalance > 10000 && Math.random() * this.app.state.dangerous > 0.8;
+    return !this.app.doneBlackout && this.app.targetBalance > 5000 && Math.random() * this.app.state.dangerous > 0.8;
   }
 
   activate() {

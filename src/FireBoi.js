@@ -26,7 +26,9 @@ class FireBoi {
         return false;
     }
 
-    tick() {}
+    tick() {
+        return false;
+    }
 
     activate() {}
 }

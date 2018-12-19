@@ -63,7 +63,11 @@ class App extends Component {
     this.addDays(7);
     this.addMoney(-100 - 300 * this.state.staff + Math.floor(0.05 * this.state.users));
     this.addUsers(Math.floor(this.state.users * (0.1 + 0.03 * (this.state.staff - this.moderators))));
-    // Update active fires
+
+    for (let i = 0; i < this.state.visibleFires.length; i++) {
+      if (this.state.visibleFires[i].tick()) return;
+    }
+
     let fireKeys = Object.keys(this.fires);
     for (let i = 0; i < fireKeys.length; i++) {
       let fire = this.fires[fireKeys[i]];
@@ -124,11 +128,9 @@ class App extends Component {
 
   animate() {
     let active = false;
-    // debugger;
     if (this.targetBalance !== this.state.balance) {
       let diff = this.targetBalance - this.state.balance;
       let sign = diff / Math.abs(diff);
-      // debugger;
       let change = Math.min(Math.max(Math.floor(0.1 * Math.abs(diff)), 2), Math.abs(diff));
       this.setState(prevState => {return {balance: prevState.balance + sign * change};});
       active = true;
