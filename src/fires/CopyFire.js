@@ -31,7 +31,7 @@ class CopyFire extends FireBoi {
             this.app.addMoney(-500);
             this.app.addStaff(1);
             this.app.moderators += 1;
-            this.app.hasTakedown = false;
+            this.app.hasTakedown = 0;
             this.app.removeFire(this);
             this.app.endCycle();
           },
